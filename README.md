@@ -70,7 +70,7 @@ unix-audit is mostly used by Cisco's offensive security testing teams (penetrati
 Analysis tools for parsing have not been released publicly at the time of writing.
 
 There are lots of other use-cases and potential use-cases too, e.g.
-* Supported password strength audits (collecting shadow files or similar)
+* Supporting password strength audits (collecting shadow files or similar)
 * Supporting the graphing of SSH trust relationships
 * Bug hunting for a particular class of security vulnerability (we like finding [RPATH vulnerabilities](https://github.com/CiscoCXSecurity/presentations/blob/master/BTLCC.pdf))
 * Searching for exposed secrets in home directories
