@@ -81,7 +81,7 @@ If one of the platforms you audit (e.g. AIX) had less checks than another platfo
 * Encourage the writing of markdown files in a common format (and each team can choose a format that works for them). This support manual side-by-side comparison of docs for two different platforms.
 * Using a markdown parser to compare checks for two different platforms.
 
-Use unix-audit in compare mode to identify checks (markdown titles) that appear for one platform but no another:
+Use unix-audit in compare mode to identify checks (markdown titles) that exist for one platform but not another:
 ```
 unix-audit.py compare ./checks-database/ linux solaris
 ```
