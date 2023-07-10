@@ -3,12 +3,11 @@ Framework for generating audit commands for Unix security audits
 
 # Usage
 ```
-Usage: generate-audit-script.py <database-dir> <platform-tag> <other-tag,other-tag,...>
+Usage: generate-audit-script.py <check-database-dir> <platform-tag> <other-tag,other-tag,...>
 
-Use 'all' for platform-tag to select all platforms (probably not useful!)
 Use 'all' for other-tag to select all tags
 
-Example: generate-audit-script.py path/dbdir linux any
+Example: generate-audit-script.py path/dbdir linux all
 
 Available platforms: aix, linux, solaris
 Available tags: network-stack-tuning, logging, privilege-escalation, file-permissions, exploit-mitigation, authentication, resource-limits, access-control, common-services, networking, cryptography, environment, software-installed, informational, important-file-locations
