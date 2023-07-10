@@ -45,7 +45,9 @@ Available tags: network-stack-tuning, logging, privilege-escalation, file-permis
 ```
 # What is unix-audit used for?
 
-unix-audit is mostly use by Cisco's offensive security testing teams (penetration testers) to collect information from systems they are asked to audit.  The collected data is parsed and analysed offline and ultimately used to generate details of security weakenesses and corresponding recommendations for customers.  Analysis tools for parsing have not been released publicly at the time of writing.
+unix-audit is mostly used by Cisco's offensive security testing teams (penetration testers and red teamers) to collect information from systems they are asked to audit.  The collected data is parsed and analysed offline and ultimately used to generate details of security weakenesses and corresponding recommendations for customers.  The depth of such audits can be fairly extensive for Build Review type activities.  Conversely, it can be fairly light for ad-hoc checks for compromised systems during penetration tests.
+
+Analysis tools for parsing have not been released publicly at the time of writing.
 
 There are lots of other use-cases and potential use-cases too, e.g.
 * Supported password strength audits (collecting shadow files or similar)
@@ -54,6 +56,8 @@ There are lots of other use-cases and potential use-cases too, e.g.
 * Searching for exposed secrets in home directories
 
 If you have commands that your team needs to run on customer systems, it should be easy to adapt for your use-case too.
+
+Also check out [unix_collector](https://github.com/CiscoCXSecurity/unix_collector) which is maintained by Cisco's teams that focus on detection and response.
 
 # How to update commands / scripts
 
