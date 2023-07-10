@@ -34,14 +34,34 @@ The public version of unix-audit doesn't analyze data, it just collects it.  Thi
 
 # Usage
 ```
-Usage: unix-audit.py <check-database-dir> <platform-tag> <other-tag,other-tag,...>
+Usage: unix-audit.py mode args
 
-Use 'all' for other-tag to select all tags
+Modes:
+ python3 unix-audit.py list <database-dir>
+ python3 unix-audit.py generate <database-dir> <platform-tag> <other-tag,other-tag,...>
+ python3 unix-audit.py compare <database-dir> <platform-tag1> <platform-tag2> <other-tag,other-tag,...>
 
-Example: unix-audit.py path/dbdir linux all
+List mode - lists the platforms and tags available for other modes.  Examples:
 
-Available platforms: aix, linux, solaris
-Available tags: network-stack-tuning, logging, privilege-escalation, file-permissions, exploit-mitigation, authentication, resource-limits, access-control, common-services, networking, cryptography, environment, software-installed, informational, important-file-locations
+ python3 unix-audit.py list ./checks-database/
+
+Generate mode - used to generate an audit script from md files.  Examples:
+
+ python3 unix-audit.py generate ./checks-database/ linux all > audit-scripts/linux-audit.sh
+ python3 unix-audit.py generate ./checks-database/ aix all > audit-scripts/aix-audit.sh
+ python3 unix-audit.py generate ./checks-database/ solaris all > audit-scripts/solaris-audit.sh
+
+Compare mode - find differences in commands for 2 or more platforms.  Examples:
+
+ python unix-audit.py compare ./checks-database/ all all > compare/comparison.md
+ python3 unix-audit.py compare ./checks-database/ linux,solaris > linux-solaris-compare.md
+ python3 unix-audit.py compare ./checks-database/ all authentication,logging > linux-solaris-compare.md
+```
+List mode:
+```
+$ python3 unix-audit.py list ./checks-database/
+Available platforms: solaris, aix, linux
+Available tags: important-file-locations, informational, authentication, software-installed, logging, resource-limits, networking, exploit-mitigation, cryptography, network-stack-tuning, file-permissions, environment, access-control, privilege-escalation, common-services
 ```
 # What is unix-audit used for?
 
