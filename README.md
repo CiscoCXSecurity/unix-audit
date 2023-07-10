@@ -7,7 +7,7 @@ You can optionally tag your commands (or whole sections of commands) to enable g
 
 The markdown database format allows the use of comments - in fact only code blocks and titles are used during script generation, everything else is ignored.  This can help to document your commands for users.
 
-The markdown format (parsed or unparsed) can also make it easier to identify gaps in your scripts - e.g. maybe your Solaris audits don't include commands for all the checks performed on Linux.  This can be quite more difficult for you only maintain source code.
+The markdown format (parsed or unparsed) can also make it easier to identify gaps in your scripts - e.g. maybe your Solaris audits don't include commands for all the checks performed on Linux.  Gaps can be more difficult to find if you only maintain source code.
 
 # Quick Start
 unix-audit can generate shell scripts containing the commands you want to run on the target system:
