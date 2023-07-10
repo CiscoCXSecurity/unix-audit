@@ -85,20 +85,21 @@ To update the [checks-database](checks-database/), just go ahead and edit the ma
 
 After updating the checks database, any existing scripts will be out of date and you'll need to regenerate them.
 
-To "compile", use the generate-audit-script.py file as directed above.
+To "compile", use the unix-audit.py in "generate" mode as directed above.
 
 # Tips on running audit scripts
 
 Remember the following when running audit scripts:
 * Collect the output from your script by redirecting output, using "script", "tee" or somethign similar.
 * Commands in the checks database generally don't create files, but some do.  So run in a clean directory so you can easily identify any other created files that you may want to retrieve at the end of the audit.
-* Don't fill up the disk partition.  You script might run for a long time and generate a lot of output.  Check there's plenty of disk space before you start.
-* Be considerate about degrading system performance.  Some commands can use a lot of CPU or disk I/O.  In practice we haven't noticed problems.  But if you were to audit 100 systems simultaneously and they all shared a resource (hypervisor/SAN), you may run into problems.
+* Don't fill up the disk partition.  Your script might run for a long time and generate a lot of output.  Check there's plenty of disk space before you start.
+* Be considerate about degrading system performance.  Some commands can use a lot of CPU or disk I/O.  In practice we haven't noticed problems.  But if you were to audit 100 systems simultaneously and they all shared a resource (e.g. hypervisor/SAN), you might run into problems.
+* Tidy up after yourself and avoid leaving sensitive data lying around.
 
 # How to check for gaps in your scripts
 
 If one of the platforms you audit (e.g. AIX) had less checks than another platform (e.g. Linux), how would you know?  unix-audit seeks to address this in two ways:
-* Encourage the writing of markdown files in a common format (and each team can choose a format that works for them). This support manual side-by-side comparison of docs for two different platforms.
+* Encourage the writing of markdown files in a common format (and each team can choose a format that works for them). This supports manual side-by-side comparison of docs for two different platforms.
 * Using a markdown parser to compare checks for two different platforms.
 
 Use unix-audit in compare mode to identify checks (markdown titles) that exist for one platform but not another:
