@@ -3,7 +3,7 @@ Framework for generating audit commands for Unix security audits.
 
 unix-audit allows you to maintain a list of commands in markdown (.md) format, then generate audit scripts from those markdown pages.  You can [view the markdown database files here](checks-database/).  Feel free to maintain your own database of checks or to contribute back to this public repository (also see [contributing](CONTRIBUTING.md)).
 
-You can optionally tag your commands (or whole sections of commands) to enable generation of scripts that contain only a subset of commands from your checks database.  This can be useful if you need to perform different types of audit (e.g. you might have a normal security audit, a bug-hunting audit, a privilege escalation check, checks for detective controls, checks for exposed secrets, commands that help you collect data for graphing, a quick audit, a slow audit, audits that generate extra files, audits that don't generate extra files, etc.)
+You can optionally tag your commands (or whole sections of commands) to enable generation of scripts that contain only a subset of your checks database.  This can be useful if you need to perform different types of audit (e.g. you might have a normal security audit, a bug-hunting audit, a privilege escalation check, checks for detective controls, checks for exposed secrets, commands that help you collect data for graphing, a quick audit, a slow audit, audits that generate extra files, audits that don't generate extra files, etc.)
 
 The markdown database format allows the use of comments - in fact only code blocks and titles are used during script generation, everything else is ignored.  This can help to document your commands for users.
 
