@@ -67,7 +67,7 @@ Available tags: important-file-locations, informational, authentication, softwar
 
 unix-audit is mostly used by Cisco's offensive security testing teams (penetration testers and red teamers) to collect information from systems they are asked to audit.  The collected data is parsed and analysed offline and ultimately used to generate details of security weakenesses and corresponding recommendations for customers.  The depth of such audits can be fairly extensive for Build Review type activities.  Conversely, it can be fairly light for ad-hoc checks for compromised systems during penetration tests.
 
-Analysis tools for parsing have not been released publicly at the time of writing.
+Analysis tools for parsing have not been released publicly at the time of writing (although you can check out [sudo-parser](https://github.com/CiscoCXSecurity/sudo-parser) if that's of interest.
 
 There are lots of other use-cases and potential use-cases too, e.g.
 * Supporting password strength audits (collecting shadow files or similar)
