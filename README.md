@@ -12,10 +12,10 @@ The markdown format (parsed or unparsed) can also make it easier to identify gap
 # Quick Start
 unix-audit can generate shell scripts containing the commands you want to run on the target system:
 ```
-python3 unix-audit.py generate ./checks-database/ linux all > linux-audit.sh
-python3 unix-audit.py generate ./checks-database/ solaris all > solaris-audit.sh
-python3 unix-audit.py generate ./checks-database/ aix all > aix-audit.sh
-python3 unix-audit.py generate ./checks-database/ linux exploit-mitigation,software-installed > smaller-audit.sh
+python3 unix-audit.py generate ./checks-database/ linux all > audit-scripts/linux-audit.sh
+python3 unix-audit.py generate ./checks-database/ solaris all > audit-scripts/solaris-audit.sh
+python3 unix-audit.py generate ./checks-database/ aix all > audit-scripts/aix-audit.sh
+python3 unix-audit.py generate ./checks-database/ linux exploit-mitigation,software-installed > audit-scripts/smaller-audit.sh
 ```
 You can get a list of supported platforms and available tags by specifying only your database directory:
 ```
