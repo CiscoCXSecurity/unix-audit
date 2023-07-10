@@ -12,14 +12,14 @@ The markdown format (parsed or unparsed) can also make it easier to identify gap
 # Quick Start
 unix-audit can generate shell scripts containing the commands you want to run on the target system:
 ```
-python3 generate-audit-script.py ./checks-database/ linux all > linux-audit.sh
-python3 generate-audit-script.py ./checks-database/ solaris all > solaris-audit.sh
-python3 generate-audit-script.py ./checks-database/ aix all > aix-audit.sh
-python3 generate-audit-script.py ./checks-database/ linux exploit-mitigation,software-installed > smaller-audit.sh
+python3 unix-audit.py generate ./checks-database/ linux all > linux-audit.sh
+python3 unix-audit.py generate ./checks-database/ solaris all > solaris-audit.sh
+python3 unix-audit.py generate ./checks-database/ aix all > aix-audit.sh
+python3 unix-audit.py generate ./checks-database/ linux exploit-mitigation,software-installed > smaller-audit.sh
 ```
 You can get a list of supported platforms and available tags by specifying only your database directory:
 ```
-$ python3 generate-audit-script.py ./checks-database/
+$ python3 unix-audit.py list ./checks-database/
 ...
 Available platforms: aix, linux, solaris
 Available tags: network-stack-tuning, logging, privilege-escalation, file-permissions, exploit-mitigation, authentication, resource-limits, access-control, common-services, networking, cryptography, environment, software-installed, informational, important-file-locations
@@ -34,11 +34,11 @@ The public version of unix-audit doesn't analyze data, it just collects it.  Thi
 
 # Usage
 ```
-Usage: generate-audit-script.py <check-database-dir> <platform-tag> <other-tag,other-tag,...>
+Usage: unix-audit.py <check-database-dir> <platform-tag> <other-tag,other-tag,...>
 
 Use 'all' for other-tag to select all tags
 
-Example: generate-audit-script.py path/dbdir linux all
+Example: unix-audit.py path/dbdir linux all
 
 Available platforms: aix, linux, solaris
 Available tags: network-stack-tuning, logging, privilege-escalation, file-permissions, exploit-mitigation, authentication, resource-limits, access-control, common-services, networking, cryptography, environment, software-installed, informational, important-file-locations
@@ -81,7 +81,8 @@ If one of the platforms you audit (e.g. AIX) had less checks than another platfo
 * Encourage the writing of markdown files in a common format (and each team can choose a format that works for them). This support manual side-by-side comparison of docs for two different platforms.
 * Using a markdown parser to compare checks for two different platforms.
 
-Use `find-audit-gaps.py` to identify checks (markdown titles) that appear for one platform but no another:
+Use `unix-audit.py` in compare mode to identify checks (markdown titles) that appear for one platform but no another:
 ```
-find-audit-gaps.py ./checks-database/ linux solaris
+unix-audit.py compare ./checks-database/ linux solaris
 ```
+See [comparison.md](compare/comparison.md) for example output.
