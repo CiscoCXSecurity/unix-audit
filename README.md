@@ -52,7 +52,7 @@ Analysis tools for parsing have not been released publicly at the time of writin
 There are lots of other use-cases and potential use-cases too, e.g.
 * Supported password strength audits (collecting shadow files or similar)
 * Supporting the graphing of SSH trust relationships
-* Bug hunting for a particular class of security vulnerability
+* Bug hunting for a particular class of security vulnerability (we like finding [RPATH vulnerabilities](https://github.com/CiscoCXSecurity/presentations/blob/master/BTLCC.pdf))
 * Searching for exposed secrets in home directories
 
 If you have commands that your team needs to run on customer systems, it should be easy to adapt for your use-case too.
