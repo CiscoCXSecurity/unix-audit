@@ -18,6 +18,7 @@ python3 generate-audit-script.py ./checks-database/ aix all > aix-audit.sh
 python3 generate-audit-script.py ./checks-database/ linux exploit-mitigation,software-installed > smaller-audit.sh
 ```
 You can get a list of supported platforms and available tags by specifying only your database directory:
+```
 $ python3 generate-audit-script.py ./checks-database/
 ...
 Available platforms: aix, linux, solaris
