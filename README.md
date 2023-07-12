@@ -30,7 +30,7 @@ Upload the script to the target system (e.g. scp or copy-paste), run it and coll
 ```
 Then copy the output file back to your own systems for analysis.
 
-The public version of unix-audit doesn't analyze data, it just collects it.  This may change in future.
+The public version of unix-audit doesn't analyze data, it just collects it.  We hope to add a feature for analyzing collected data too in future.
 
 # Usage
 ```
