@@ -37,8 +37,6 @@ and fix existing bugs. Here is what you can do:
 
 - Help ensure that existing issues follows the recommendations from the _[Reporting Issues](#reporting-issues)_ section,
   providing feedback to the issue's author on what might be missing.
-- Review and update the existing content of our [Wiki](https://github.com/org_name/repo_name/wiki) with up-to-date
-  instructions and code samples.
 - Review existing pull requests, and testing patches against real existing applications that use `unix-audit`.
 - Write a test, or add a missing test case to an existing test.
 
