@@ -14,9 +14,13 @@ hostname
 ```
 uname -a
 ```
-### Network interfaces
+### Network interfaces (ifconfig)
 ```
 ifconfig -a
+```
+### Network interfaces (ip)
+```
+ip -a
 ```
 ### Running as
 ```
@@ -122,9 +126,21 @@ Tags: networking
 ```
 arp -an
 ```
-### Routing
+### ARP (using ip)
+```
+ip -4 neigh show
+```
+### IPv6 neighbor table
+```
+ip -6 neigh show
+```
+### Routing (netstat)
 ```
 netstat -rn
+```
+### Routing (ip)
+```
+ip route show
 ```
 ### Name services
 ```
@@ -164,9 +180,13 @@ netstat -anp | grep -v "unix" | grep "LISTEN"
 ```
 rpcinfo -p
 ```
-### IPv6
+### IPv6 (ifconfig)
 ```
 ifconfig lo | grep "::1"
+```
+### IPv6 (ip)
+```
+ip addr show dev lo | grep ::1
 ```
 ### Network traffic
 ```
@@ -245,7 +265,7 @@ grep -v "/bash$" /etc/passwd
 ```
 ### Valid shells
 ```
-cat /etc/shells 
+cat /etc/shells
 ```
 ### SSH ACLs configured
 ```
