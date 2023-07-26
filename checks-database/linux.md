@@ -172,10 +172,15 @@ echo $http_proxy
 echo $https_proxy
 echo $ftp_proxy
 ```
-### Listening services
+### Listening services (netstat)
 ```
 netstat -anp | grep -v "unix" | grep "LISTEN"
 ```
+### Listening services (socket stat)
+```
+ss -tulpan  | grep LISTEN
+```
+
 ### RPC services
 ```
 rpcinfo -p
