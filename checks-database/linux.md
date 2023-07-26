@@ -154,17 +154,29 @@ cat /etc/hosts
 ```
 cat /etc/resolv.conf
 ```
-### Internet
+### Internet (IPv4)
 ```
-ping -c 5 www.google.co.uk
+ping -4 -c 5 www.google.co.uk
 ping -c 5 8.8.8.8
 ```
-### Web accessible
+### Internet (IPv6)
+```
+ping -6 -c 5 www.google.co.uk
+ping -c 5 2001:4860:4860::8888
+```
+### Web accessible (IPv4)
 ```
 wget -O - https://216.58.213.164
-wget -O - https://www.google.com
+wget -O -4 - https://www.google.com
 curl https://216.58.213.164
-curl https://www.google.com
+curl -4 https://www.google.com
+```
+### Web accessible (IPv6)
+```
+wget -O - https://[2600::]
+wget -6 -O - https://www.google.com
+curl https://[2600::]
+curl -6 https://www.google.com
 ```
 ### Internet by proxy
 ```
