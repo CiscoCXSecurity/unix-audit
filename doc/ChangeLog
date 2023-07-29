@@ -5,6 +5,7 @@
 * Added doc/ChangeLog, doc/TODO
 * Updated unix-audit.py to include hashbang
 * Reformatted doc/TODO
+* Updated audit-scripts/linux-audit.sh
 
 -- Tim Brown <twadhwab@cisco.com>
 

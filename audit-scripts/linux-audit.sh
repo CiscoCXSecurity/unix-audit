@@ -32,8 +32,11 @@ hostname
 echo "=== Linux > Informational > Kernel version"===
 uname -a
 
-echo "=== Linux > Informational > Network interfaces"===
+echo "=== Linux > Informational > Network interfaces (ifconfig)"===
 ifconfig -a
+
+echo "=== Linux > Informational > Network interfaces (ip)"===
+ip -a
 
 echo "=== Linux > Informational > Running as"===
 id
@@ -110,8 +113,17 @@ last
 echo "=== Linux > Networking > ARP"===
 arp -an
 
-echo "=== Linux > Networking > Routing"===
+echo "=== Linux > Networking > ARP (using ip)"===
+ip -4 neigh show
+
+echo "=== Linux > Networking > IPv6 neighbor table"===
+ip -6 neigh show
+
+echo "=== Linux > Networking > Routing (netstat)"===
 netstat -rn
+
+echo "=== Linux > Networking > Routing (ip)"===
+ip route show
 
 echo "=== Linux > Networking > Name services"===
 cat /etc/nsswitch.conf
@@ -122,29 +134,45 @@ cat /etc/hosts
 echo "=== Linux > Networking > DNS"===
 cat /etc/resolv.conf
 
-echo "=== Linux > Networking > Internet"===
-ping -c 5 www.google.co.uk
+echo "=== Linux > Networking > Internet (IPv4)"===
+ping -4 -c 5 www.google.co.uk
 ping -c 5 8.8.8.8
 
-echo "=== Linux > Networking > Web accessible"===
+echo "=== Linux > Networking > Internet (IPv6)"===
+ping -6 -c 5 www.google.co.uk
+ping -c 5 2001:4860:4860::8888
+
+echo "=== Linux > Networking > Web accessible (IPv4)"===
 wget -O - https://216.58.213.164
-wget -O - https://www.google.com
+wget -O -4 - https://www.google.com
 curl https://216.58.213.164
-curl https://www.google.com
+curl -4 https://www.google.com
+
+echo "=== Linux > Networking > Web accessible (IPv6)"===
+wget -O - https://[2600::]
+wget -6 -O - https://www.google.com
+curl https://[2600::]
+curl -6 https://www.google.com
 
 echo "=== Linux > Networking > Internet by proxy"===
 echo $http_proxy
 echo $https_proxy
 echo $ftp_proxy
 
-echo "=== Linux > Networking > Listening services"===
+echo "=== Linux > Networking > Listening services (netstat)"===
 netstat -anp | grep -v "unix" | grep "LISTEN"
+
+echo "=== Linux > Networking > Listening services (socket stat)"===
+ss -tulpan  | grep LISTEN
 
 echo "=== Linux > Networking > RPC services"===
 rpcinfo -p
 
-echo "=== Linux > Networking > IPv6"===
+echo "=== Linux > Networking > IPv6 (ifconfig)"===
 ifconfig lo | grep "::1"
+
+echo "=== Linux > Networking > IPv6 (ip)"===
+ip addr show dev lo | grep ::1
 
 echo "=== Linux > Networking > Network traffic"===
 # Possible alternative to which for non Linux systems:
