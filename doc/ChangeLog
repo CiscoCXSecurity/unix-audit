@@ -1,0 +1,177 @@
+2023-07-29 unix-audit main
+
+* Merge pull request #4 from jenslink/main
+  * Added IPv6 checks
+* Added doc/ChangeLog, doc/TODO
+
+-- Tim Brown <twadhwab@cisco.com>
+
+2023-07-28 unix-audit main
+
+* Reviewed and updated COPYING to LICENSE in line with Cisco's open source policies
+* Updated audit-scripts/linux-audit.sh, audit-scripts/solaris-audit.sh,
+  audit-scripts/aix-audit.sh
+
+-- Mark Lowe <mark-lowe@users.noreply.github.com>
+
+2023-07-26 unix-audit main
+
+* Merged pull request #1 from jenslink/main
+  * Added ip commands in addition to old style ifconfig / arp / netstat for Linux
+* Merged pull request #2 from jenslink/main
+  * Added ip commands in addition to old style ifconfig / arp / netstat
+
+-- Tim Brown <twadhwab@cisco.com>
+
+2023-07-25 unix-audit main
+
+* Reviewed and updated LICENSE to COPYING
+  * The original proof of concept for this code predates Cisco and was onboarded
+    as part of the Portcullis acquisition. As such it was included in
+    intellectual property covered under the original contributor acquisition
+    terms
+* Added doc/AUTHORS
+
+-- Tim Brown <twadhwab@cisco.com>
+
+2023-07-12 unix-audit main
+
+* Updated CONTRIBUTING.md, README.md
+* Reviewed and updated COPYING to LICENSE
+
+-- Mark Lowe <mark-lowe@users.noreply.github.com>
+
+2023-07-10 unix-audit main
+
+* Reviewed and updated LICENSE to COPYING
+
+-- Tim Brown <twadhwab@cisco.com>
+
+2023-07-10 unix-audit main
+
+* Created CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md
+* Updated README.md
+* Replaced generate-audit-script.py with unix-audit.py
+* Generated audit-scripts/linux-audit.sh, audit-scripts/solaris-audit.sh,
+  audit-scripts/aix-audit.sh
+* Created compare/comparison.md
+
+-- Mark Lowe <mark-lowe@users.noreply.github.com>
+
+2023-07-06 unix-audit main
+
+* Created checks-database/linux.md, checks-database/solaris.md,
+  checks-database/linux.md
+* Created generate-audit-script.py
+* Created README.md, LICENSE
+
+-- Mark Lowe <mark-lowe@users.noreply.github.com>
+
+2020-08-08 portcullis-*.sh 2016-12 - 2020-08
+
+* Work in CX APT private repository (operating_system_build_review@various)
+* Updates by twadhwab
+* Linux changes
+  * Added lots of new data sources
+    * Date
+    * Running as
+    * Boot flags
+    * Kernel logs
+    * Kernel config
+    * Kernel hardening
+    * Active kernel hardening
+    * Host is KVM
+    * Host is VMware
+    * Host is VirtualBox
+    * Host is Xen
+    * Host is container
+    * Containers
+    * K8s cluster
+    * Environment variables set
+    * Currently logged in
+    * Logins
+    * Web accessible
+    * Internet by proxy
+    * RPC services
+    * Network shares mounted
+    * Account statuses
+    * SMB shares
+    * Active Directory enabled
+    * Non-local users
+    * Using NIS
+    * Using Kerberos
+    * Using LDAP
+    * Trusted CAs
+    * Trusted keyrings
+    * Packages for NOPC
+    * Package management
+    * Systemd services
+    * Systemd configs
+    * Syslog process
+    * Syslog with rsyslog
+    * Syslog with syslog-ng
+    * User histories
+    * Auditing
+    * Auditd policy
+    * User homes
+    * AppArmour supported
+    * AppArmour policy
+    * AppArmour processes
+    * SetUID debug
+    * PTrace scope
+    * User capabilities
+    * Default path
+    * User paths
+    * Init paths
+    * Default linker path
+    * User linker paths
+    * Init linker paths
+    * SetUID files
+    * SetGID files
+    * Sudo configuration
+    * Insecure RPATHs
+    * Processes with open files
+    * Proc tree
+    * Sys tree
+    * POSIX shared memory
+    * System V shared memory
+    * UNIX sockets
+    * SSH config
+    * SSH client config
+    * Web server config
+    * Logs
+    * SetUID and setGIDs files
+    * Temporary locations
+    * Core files
+  * Added FXB's tweaks to gather network traffic
+  * Various bug fixes
+* AIX changes
+  * A couple more bug fixed
+  
+-- Tim Brown <twadhwab@cisco.com>
+  
+2016-12-07 portcullis-*.sh 2004 - 2016
+  
+* Import of code from Portcullis Labs private repository (build-reviews@11936)
+* Initial work by TMB
+* Linux changes
+  * Added SSH running config, web server config, web server cgi-bin
+  * Added SELinux processes
+  * Tweaked kernel module checks
+  * Added Internet
+  * Various bug fixes
+* Solaris changes
+  * Added SSH running config, web server config, web server cgi-bin
+  * Added Internet
+  * Added Stack randomisation, randomised binaries, packages legit, crypto allowed for shadow, basic privs, priv limits, lock after retries, directed broadcasts, echo broadcasts, TCP limits, strong ISS, source routing, timestamp broadcasts, netmask broadcasts, redirects, zones, roles, profiles, auditing, device policy, command profiles, basic profile, console profile, strict multihoming
+  * Updated Network stack tuning to cover IPv6 for all, updated packages installed, active mounts secure, configured mounts secure
+  * Cleaned up for/while loops
+  * Cleaned up cat/grep usage
+  * Various bug fixes
+* AIX changes
+  * Added SSH running config, web server config, web server cgi-bin
+  * Added Internet
+  * Various bug fixes
+  * Merged RGH's VIOS notes
+  
+-- Tim Brown <tmb@portcullis-security.com>
