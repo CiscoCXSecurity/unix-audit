@@ -3,6 +3,7 @@
 * Merge pull request #4 from jenslink/main
   * Added IPv6 checks
 * Added doc/ChangeLog, doc/TODO
+* Updated unix-audit.py to include hashbang
 
 -- Tim Brown <twadhwab@cisco.com>
 
