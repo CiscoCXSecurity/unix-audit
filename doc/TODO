@@ -1,15 +1,15 @@
 * Convert what can i.. to unix-audit checks
 * Convert badrpath.sh to to unix-audit checks
 * Solaris
- * PAM
- * Passworded console
- * Audit flags
- * Per account locking
+  * PAM
+  * Passworded console
+  * Audit flags
+  * Per account locking
 * AIX
- * AIX VIO Servers use a padmin console, to limit the privileges/commands available for (mis)use; similar to the enable command on Cisco devices
- * Run AIX/VIOS Command with padmin/root Privileges in VIO Server
- * Login as user padmin into VIO server: padmin/<padmin_password>
- * Now you can run any AIX command at the padmin console without jumping to root like so: print "lsvg -l rootvg" | oem_setup_env
- * To gain root access on VIO server like so: oem_setup_env
- * You run lsmap -all VIOS command like so: /usr/ios/cli/ioscli lsmap -all
- * By default the ioscli commands are not available for the root user. All ioscli commands are in fact calls of /usr/ios/cli/ioscli with the command as argument. So you can use all ioscli commands as user root by appending /usr/ios/cli/ioscli in front of the command
+  * AIX VIO Servers use a padmin console, to limit the privileges/commands available for (mis)use; similar to the enable command on Cisco devices
+  * Run AIX/VIOS Command with padmin/root Privileges in VIO Server
+  * Login as user padmin into VIO server: padmin/<padmin_password>
+  * Now you can run any AIX command at the padmin console without jumping to root like so: print "lsvg -l rootvg" | oem_setup_env
+  * To gain root access on VIO server like so: oem_setup_env
+  * You run lsmap -all VIOS command like so: /usr/ios/cli/ioscli lsmap -all
+  * By default the ioscli commands are not available for the root user. All ioscli commands are in fact calls of /usr/ios/cli/ioscli with the command as argument. So you can use all ioscli commands as user root by appending /usr/ios/cli/ioscli in front of the command

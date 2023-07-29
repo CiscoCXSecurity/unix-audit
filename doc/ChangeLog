@@ -4,6 +4,7 @@
   * Added IPv6 checks
 * Added doc/ChangeLog, doc/TODO
 * Updated unix-audit.py to include hashbang
+* Reformatted doc/TODO
 
 -- Tim Brown <twadhwab@cisco.com>
 
