@@ -1,3 +1,10 @@
+2023-07-31 unix-audit port_to_yaml
+
+* Added checks-database/linux.yml, checks-database/solaris.yml,
+  checks-database/aix.yml based on existing Markdown formatted checks
+
+-- Tim Brown <twadhwab@cisco.com>
+
 2023-07-29 unix-audit main
 
 * Merge pull request #4 from jenslink/main

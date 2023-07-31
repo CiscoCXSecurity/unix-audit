@@ -1,0 +1,596 @@
+platformtags:
+  - "AIX"
+checks:
+  - type: "Informational"
+    checks:
+      - name: "Hostname"
+        exec:
+          - command: "hostname"
+            stderr: false
+            encode: ""
+      - name: "Kernel version"
+        exec:
+          - command: "uname -a"
+            stderr: false
+            encode: ""
+      - name: "Network interfaces"
+        exec:
+          - command: "ifconfig -a"
+            stderr: false
+            encode: ""
+  - type: "Environment"
+    checks:
+      - name: "PCI cards accessible"
+        exec:
+          - command: "lsdev -C"
+            stderr: false
+            encode: ""
+      - name: "USB peripherals accessible"
+        exec:
+          - command: "lsdev -C"
+            stderr: false
+            encode: ""
+  - type: "Networking"
+    checks:
+      - name: "ARP"
+        exec:
+          - command: "arp -an"
+            stderr: false
+            encode: ""
+      - name: "Routing"
+        exec:
+          - command: "netstat -rn"
+            stderr: false
+            encode: ""
+      - name: "Name services"
+        exec:
+          - command: "cat /etc/netsvc.conf"
+            stderr: false
+            encode: ""
+      - name: "Hosts"
+        exec:
+          - command: "cat /etc/hosts"
+            stderr: false
+            encode: ""
+      - name: "DNS"
+        exec:
+          - command: "cat /etc/resolv.conf"
+            stderr: false
+            encode: ""
+      - name: "Internet"
+        exec:
+          - command: "ping -c 5 www.google.co.uk; ping -c 5 8.8.8.8"
+            stderr: false
+            encode: ""
+      - name: "Listening services"
+        exec:
+          - command: "netstat -an | grep -v \"unix\" | grep \"LISTEN\""
+            stderr: false
+            encode: ""
+      - name: "IPv6"
+        exec:
+          - command: "ifconfig lo0 | grep \"::1\""
+            stderr: false
+            encode: ""
+  - type: "Network stack tuning"
+    checks:
+      - name: "IP forwarding"
+        exec:
+          - command: "/usr/sbin/no -a | grep \"ipforwarding\""
+            stderr: false
+            encode: ""
+  - type: "Access control"
+    checks:
+      - name: "Firewall configured"
+        exec:
+          - command: "lsfilt"
+            stderr: false
+            encode: ""
+      - name: "TCP wrappers used"
+        exec:
+          - command: "cat /etc/hosts.allow; cat /etc/hosts.deny"
+            stderr: false
+            encode: ""
+      - name: ".rhosts used"
+        exec:
+          - command: "find / -name .rhosts -ls"
+            stderr: false
+            encode: ""
+      - name: "hosts.equiv used"
+        exec:
+          - command: "cat /etc/hosts.equiv"
+            stderr: false
+            encode: ""
+      - name: ".netrc used"
+        exec:
+          - command: "find / -name .netrc -ls"
+            stderr: false
+            encode: ""
+      - name: "Remote X"
+        exec:
+          - command: "netstat -an | grep \"LISTEN\" | egrep \"6000|177\""
+            stderr: false
+            encode: ""
+      - name: "Accounts with non-standard shells"
+        exec:
+          - command: "grep -v \"/sh$\" /etc/passwd"
+            stderr: false
+            encode: ""
+      - name: "Valid shells"
+        exec:
+          - command: "cat /etc/shells"
+            stderr: false
+            encode: ""
+      - name: "SSH ACLs configured"
+        exec:
+          - command: "grep \"Match\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH user logins"
+        exec:
+          - command: "egrep \"AllowUsers|DenyUsers|AllowGroups|DenyGroups\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH root logins"
+        exec:
+          - command: "grep \"PermitRootLogin\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH TCP forwarding"
+        exec:
+          - command: "grep \"AllowTCPForwarding\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH gateway ports"
+        exec:
+          - command: "grep \"GatewayPorts\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH VPN"
+        exec:
+          - command: "grep \"PermitTunnel\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH agent forwarding"
+        exec:
+          - command: "grep \"AllowAgentForwarding\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH X11 forwarding"
+        exec:
+          - command: "grep \"X11Forwarding\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH binds X11 to localhost"
+        exec:
+          - command: "grep \"X11UseLocalhost\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH reads environment from user file"
+        exec:
+          - command: "grep \"PermitUserEnvironment\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH accepts environment variables"
+        exec:
+          - command: "grep \"AcceptEnv\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH looks up connections in DNS"
+        exec:
+          - command: "grep \"UseDNS\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH uses privilege separation"
+        exec:
+          - command: "grep \"UsePrivilegeSeparation\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: ".shosts used"
+        exec:
+          - command: "find / -name .shosts -ls"
+            stderr: false
+            encode: ""
+      - name: "shosts.equiv used"
+        exec:
+          - command: "cat /etc/shosts.equiv"
+            stderr: false
+            encode: ""
+      - name: "SSH allows .rhosts"
+        exec:
+          - command: "grep \"IgnoreRhosts\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH public/private keys used"
+        exec:
+          - command: "find / -name id_dsa -o -name id_dsa.pub -o -name id_rsa -o -name id_rsa.pub -o -name authorized_keys -ls"
+            stderr: false
+            encode: ""
+      - name: "SSH sessions are throttled"
+        exec:
+          - command: "egrep \"MaxAuthTries|MaxSessions|MaxStartups\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "FTP users disallowed"
+        exec:
+          - command: "cat /etc/ftpusers"
+            stderr: false
+            encode: ""
+      - name: "NFS shares"
+        exec:
+          - command: "cat /etc/exports"
+            stderr: false
+            encode: ""
+      - name: "Secure consoles"
+        exec:
+          - command: "cat /etc/security/user"
+            stderr: false
+            encode: ""
+  - type: "Authentication"
+    checks:
+      - name: "Banner"
+        exec:
+          - command: "cat /etc/issue"
+            stderr: false
+            encode: ""
+      - name: "MOTD"
+        exec:
+          - command: "cat /etc/motd"
+            stderr: false
+            encode: ""
+      - name: "Passwords"
+        exec:
+          - command: "cat /etc/passwd; cat /etc/security/passwd"
+            stderr: false
+            encode: ""
+      - name: "SNMP community strings"
+        exec:
+          - command: "grep \"community\" /etc/snmpd.conf"
+            stderr: false
+            encode: ""
+      - name: "Login policy"
+        exec:
+          - command: "cat /etc/security/login.cfg"
+            stderr: false
+            encode: ""
+      - name: "Password aging"
+        exec:
+          - command: "cat /etc/security/users"
+            stderr: false
+            encode: ""
+      - name: "Password minimum strength"
+        exec:
+          - command: "cat /etc/security/users"
+            stderr: false
+            encode: ""
+      - name: "Unlocked accounts"
+        exec:
+          - command: "cat /etc/security/passwd"
+            stderr: false
+            encode: ""
+      - name: "Session timeout"
+        exec:
+          - command: "echo $TMOUT"
+            stderr: false
+            encode: ""
+      - name: "SSH shows banner"
+        exec:
+          - command: "grep \"Banner\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH shows MOTD"
+        exec:
+          - command: "grep \"PrintMotd\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH allows empty passwords"
+        exec:
+          - command: "grep \"PermitEmptyPasswords\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+  - type: "Cryptography"
+    checks:
+      - name: "known_hosts encrypted"
+        exec:
+          - command: "cat /.ssh/known_hosts"
+            stderr: false
+            encode: ""
+      - name: "SSH protocol"
+        exec:
+          - command: "grep \"Protocol\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH protocol 1 key regeneration"
+        exec:
+          - command: "grep \"KeyRegenerationInterval\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH protocol 1 key size"
+        exec:
+          - command: "grep \"ServerKeyBits\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH protocol 2 public key authentication"
+        exec:
+          - command: "grep \"PubkeyAuthentication\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH allows .rhosts with protocol 1 RSA"
+        exec:
+          - command: "grep \"RhostsRSAAuthentication\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH allows protocol 1 RSA"
+        exec:
+          - command: "grep \"RSAAuthentication\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH password based authentication"
+        exec:
+          - command: "grep \"PasswordAuthentication\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH ciphers"
+        exec:
+          - command: "grep \"Ciphers\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "SSH MACs"
+        exec:
+          - command: "grep \"MACs\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "Blacklisted keys"
+        exec:
+          - command: "grep \"PermitBlacklistedKeys\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "Crypto used for shadow"
+        exec:
+          - command: "grep \"pwd_algorithm\" /etc/security/login.cfg"
+            stderr: false
+            encode: ""
+  - type: "Software installed"
+    checks:
+      - name: "OS release"
+        exec:
+          - command: "oslevel -sq; oslevel -rq"
+            stderr: false
+            encode: ""
+      - name: "Packages installed"
+        exec:
+          - command: "lslpp -Lc; rpm -q -a"
+            stderr: false
+            encode: ""
+      - name: "Processes"
+        exec:
+          - command: "ps -aef"
+            stderr: false
+            encode: ""
+      - name: "Services"
+        exec:
+          - command: "lssrc -a; lssrc -a | grep -v \"Sub\" | while read subsystem _; do echo \"Subsystem: $subsystem\"; lssrc -ls $subsystem; done"
+            stderr: false
+            encode: ""
+      - name: "Development tools"
+        exec:
+          - command: "find / -type f \\( -name perl -o -name gcc -o -name javac -o -name python -o -name ruby -o -name gdb \\)"
+            stderr: false
+            encode: ""
+      - name: "3rd party software"
+        exec:
+          - command: "find /usr/local -ls; find /opt -ls"
+            stderr: false
+            encode: ""
+  - type: "Logging"
+    checks:
+      - name: "Time synchronisation"
+        exec:
+          - command: "ps -aef | grep \"ntp\""
+            stderr: false
+            encode: ""
+      - name: "Remote logging"
+        exec:
+          - command: "grep \"@\" /etc/syslog.conf"
+            stderr: false
+            encode: ""
+      - name: "Cron logging"
+        exec:
+          - command: "grep \"cron\" /etc/syslog.conf"
+            stderr: false
+            encode: ""
+  - type: "Resource limits"
+    checks:
+      - name: "Configured limits"
+        exec:
+          - command: "cat /etc/security/limits"
+            stderr: false
+            encode: ""
+      - name: "Running limits"
+        exec:
+          - command: "ulimit -a"
+            stderr: false
+            encode: ""
+      - name: "Disk quotas"
+        exec:
+          - command: "lsfs | grep \"Quota\""
+            stderr: false
+            encode: ""
+  - type: "File permissions"
+    checks:
+      - name: "Init umask"
+        exec:
+          - command: "grep \"umask\" /etc/rc.*"
+            stderr: false
+            encode: ""
+      - name: "FTP umask"
+        exec:
+          - command: "grep \"ftpd\" /etc/inetd.conf"
+            stderr: false
+            encode: ""
+      - name: "Root umask"
+        exec:
+          - command: "umask"
+            stderr: false
+            encode: ""
+      - name: "User umask"
+        exec:
+          - command: "grep \"umask\" /home/*/.[a-z]*; grep \"umask\" /etc/security/.profile; grep \"umask\" /etc/profile; cat /etc/security/user"
+            stderr: false
+            encode: ""
+      - name: "Service umasks"
+        exec:
+          - command: "grep \"umask\" /etc/rc*.d/*"
+            stderr: false
+            encode: ""
+      - name: "World readable files / directories"
+        exec:
+          - command: "find / -perm -o+r -ls"
+            stderr: false
+            encode: ""
+      - name: "World writable files / directories"
+        exec:
+          - command: "find / -perm -o+w -ls"
+            stderr: false
+            encode: ""
+      - name: "Group writable files / directories"
+        exec:
+          - command: "find / -perm -o+w -ls"
+            stderr: false
+            encode: ""
+      - name: "Unowned files / directories"
+        exec:
+          - command: "find / -nouser -ls"
+            stderr: false
+            encode: ""
+      - name: "Ungrouped files / directories"
+        exec:
+          - command: "find / -nogroup -ls"
+            stderr: false
+            encode: ""
+      - name: "Log files"
+        exec:
+          - command: "find /var/log /var/adm -ls"
+            stderr: false
+            encode: ""
+      - name: "SSH strict mode"
+        exec:
+          - command: "grep \"StrictModes\" /etc/ssh/sshd_config"
+            stderr: false
+            encode: ""
+      - name: "Root home"
+        exec:
+          - command: "find /root -ls"
+            stderr: false
+            encode: ""
+  - type: "Exploit mitigation"
+    checks:
+      - name: "Active mounts secure"
+        exec:
+          - command: "mount | grep -v \"nosetuid\";  mount | grep -v \"noexec\"; lsfs"
+            stderr: false
+            encode: ""
+      - name: "Configured mounts secure"
+        exec:
+          - command: "cat /etc/filesystems"
+            stderr: false
+            encode: ""
+      - name: "Separate partitions"
+        exec:
+          - command: "mount | grep \"/var\"; mount | grep \"/var/log\"; mount | grep \"/home\""
+            stderr: false
+            encode: ""
+      - name: "Cron users"
+        exec:
+          - command: "cat /var/adm/cron/cron.allow /var/adm/cron/cron.deny"
+            stderr: false
+            encode: ""
+      - name: "At users"
+        exec:
+          - command: "cat /var/adm/cron/at.allow /var/adm/cron/at.deny"
+            stderr: false
+            encode: ""
+      - name: "Non executable stack"
+        exec:
+          - command: "sedmgr"
+            stderr: false
+            encode: ""
+  - type: "Privilege escalation"
+    checks:
+      - name: "Init scripts run"
+        exec:
+          - command: "cat /etc/inittab; cat /etc/inittab | cut -f 4 -d: | cut -f 1 -d \" \" | while read file; do echo \"File: $file\"; ls -la $file; done; ls -la /etc/rc.*"
+            stderr: false
+            encode: ""
+      - name: "At scripts run"
+        exec:
+          - command: "for file in /var/spool/atjobs/*; do echo \"File: $file\"; ls -l $file; cat $file; done"
+            stderr: false
+            encode: ""
+      - name: "Cron scripts run"
+        exec:
+          - command: "for file in /var/spool/cron/*; do echo \"File: $file\"; ls -l $file; cat $file; done "
+            stderr: false
+            encode: ""
+      - name: "Default path"
+        exec:
+          - command: "echo $PATH"
+            stderr: false
+            encode: ""
+      - name: "User paths"
+        exec:
+          - command: "grep \"PATH\" /home/*/.[a-z]*"
+            stderr: false
+            encode: ""
+      - name: "Init paths"
+        exec:
+          - command: "cat /etc/inittab | cut -f 4 -d: | cut -f 1 -d \" \" | while read file; do echo \"File: $file\"; grep \"PATH\" $file; done; grep \"PATH\" /etc/rc.*"
+            stderr: false
+            encode: ""
+      - name: "Default linker path"
+        exec:
+          - command: "grep \"LD_LIBRARY_PATH\" /etc/profile; echo $LD_LIBRARY_PATH"
+            stderr: false
+            encode: ""
+      - name: "User linker paths"
+        exec:
+          - command: "egrep \"LIBPATH|LD_LIBRARY_PATH\" /home/*/.[a-z]*"
+            stderr: false
+            encode: ""
+      - name: "Init linker paths"
+        exec:
+          - command: "cat /etc/inittab | cut -f 4 -d: | cut -f 1 -d \" \" | while read file; do echo \"File: $file\"; egrep \"LIBPATH|LD_LIBRARY_PATH\" $file; done; egrep \"LIBPATH|LD_LIBRARY_PATH\" /etc/rc.*"
+            stderr: false
+            encode: ""
+      - name: "SetUID files"
+        exec:
+          - command: "find / -perm -u+s -type f -ls "
+            stderr: false
+            encode: ""
+      - name: "SetGID files"
+        exec:
+          - command: "find / -perm -g+s -type f -ls "
+            stderr: false
+            encode: ""
+      - name: "Sudo configuration"
+        exec:
+          - command: "cat /etc/sudoers"
+            stderr: false
+            encode: ""
+  - type: "Common services"
+    checks:
+      - name: "SSH running config"
+        exec:
+          - command: "sshd -T"
+            stderr: false
+            encode: ""
+      - name: "Web server config"
+        exec:
+          - command: "find / -name httpd.conf | while read file; do echo \"File: $file\"; ls -l $file; cat $file; done"
+            stderr: false
+            encode: ""
+      - name: "Web server cgi-bin"
+        exec:
+          - command: "find /usr/lib -name cgi-bin | while read file; do echo \"File: $file\"; ls -l $file; done"
+            stderr: false
+            encode: ""
